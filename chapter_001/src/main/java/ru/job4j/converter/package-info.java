@@ -1,8 +1,8 @@
 /**
- * Package for calculator task.
+ * Package for converter task.
  *
  * @author Alexey Kochanov (dzot-1993@yandex.ru)
  * @version $Id$
  * @since 0.1
  */
-package ru.job4j.calculator;
+package ru.job4j.converter;

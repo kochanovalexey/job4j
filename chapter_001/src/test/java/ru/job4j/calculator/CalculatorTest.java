@@ -4,7 +4,16 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Class Класс тест калькулятора
+ * @author akochanov
+ * @since 10.03.2019
+ * @version 1
+ */
 public class CalculatorTest {
+    /**
+     * Тест метода add
+     */
     @Test
     public void whenAddOnePlusOneThenTwo()  {
         Calculator calc = new Calculator();
@@ -13,6 +22,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Тест метода subtract
+     */
     @Test
     public void whenSubtractOnePlusOneThenTwo()  {
         Calculator calc = new Calculator();
@@ -21,6 +33,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Тест метода div
+     */
     @Test
     public void whenDivOnePlusOneThenTwo()  {
         Calculator calc = new Calculator();
@@ -29,6 +44,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Тест метода multiple
+     */
     @Test
     public void whenMultipleOnePlusOneThenTwo()  {
         Calculator calc = new Calculator();
