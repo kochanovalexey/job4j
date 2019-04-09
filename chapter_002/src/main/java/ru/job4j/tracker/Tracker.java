@@ -59,7 +59,7 @@ public class Tracker {
         boolean result = false;
         for (int i = 0; i < position; i++) {
             if (id.equals(items[i].getId())) {
-                System.arraycopy(items, i + 1, items, i, 100 - i -1);
+                System.arraycopy(items, i + 1, items, i, position - i - 1);
                 position--;
                 result = true;
                 break;

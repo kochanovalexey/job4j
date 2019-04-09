@@ -51,8 +51,8 @@ public class TrackerTest {
         item1.setId("2");
         tracker.add(item2);
         item2.setId("3");
-        tracker.delete(item1.getId());
-        Item result = tracker.findById(item1.getId());
+        tracker.delete(item2.getId());
+        Item result = tracker.findById(item2.getId());
         Item extend = null;
         assertThat(result, is(extend));
     }
