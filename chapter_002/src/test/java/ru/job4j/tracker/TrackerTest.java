@@ -43,9 +43,16 @@ public class TrackerTest {
     public void whenDeleteItemTrackerDoNotHasSameItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
+        Item item1 = new Item("test2", "testDescription1", 122L);
+        Item item2 = new Item("test1", "testDescription2", 125L);
         tracker.add(item);
-        tracker.delete(item.getId());
-        Item result = tracker.findById(item.getId());
+        item.setId("1");
+        tracker.add(item1);
+        item1.setId("2");
+        tracker.add(item2);
+        item2.setId("3");
+        tracker.delete(item1.getId());
+        Item result = tracker.findById(item1.getId());
         Item extend = null;
         assertThat(result, is(extend));
     }

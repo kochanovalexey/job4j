@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Class Класс Трекера
  *
@@ -35,9 +38,9 @@ public class Tracker {
      * @return - результат выполнения метода
      */
     boolean replace(String id, Item item) {
-
+        item.setId(id);
         boolean result = false;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (id.equals(items[i].getId())) {
                 items[i] = item;
                 result = true;
@@ -54,9 +57,9 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (id.equals(items[i].getId())) {
-                System.arraycopy(items, i, items, i, 100);
+                System.arraycopy(items, i + 1, items, i, 100 - i -1);
                 position--;
                 result = true;
                 break;
@@ -70,9 +73,7 @@ public class Tracker {
      * @return - массив заявок
      */
     public Item[] findAll() {
-        Item[] allItems = new Item[position];
-        System.arraycopy(items, 0, allItems, 0, position);
-        return allItems;
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -88,9 +89,7 @@ public class Tracker {
                 tempItems[index++] = items[i];
             }
         }
-        Item[] foundItems = new Item[index];
-        System.arraycopy(tempItems, 0, foundItems, 0, index);
-        return foundItems;
+        return Arrays.copyOf(tempItems, index);
     }
 
     /**
@@ -103,6 +102,7 @@ public class Tracker {
         for(int i = 0; i < position; i++) {
             if (id.equals(items[i].getId())) {
                 foundItem = items[i];
+                break;
             }
         }
         return foundItem;
