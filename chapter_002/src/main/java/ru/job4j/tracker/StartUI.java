@@ -98,12 +98,8 @@ public class StartUI {
         String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc, System.currentTimeMillis());
         this.tracker.add(item);
-<<<<<<< HEAD
         String text = String.format("------------ Новая заявка с getId : %s -----------", item.getId());
         System.out.println(text);
-=======
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
->>>>>>> origin/master
     }
 
     /**
@@ -113,18 +109,12 @@ public class StartUI {
         Item[] items = this.tracker.findAll();
         System.out.println("------------ Список всех заявок ------------");
         for (Item item : items) {
-<<<<<<< HEAD
             String idText = String.format("ID: %s", item.getId());
             String nameText = String.format("Name: %s", item.getName());
             String descText = String.format("Description: %s", item.getDecs());
             System.out.println(idText);
             System.out.println(nameText);
             System.out.println(descText);
-=======
-            System.out.println("ID: " + item.getId());
-            System.out.println("Name: " + item.getName());
-            System.out.println("Description: " + item.getDecs());
->>>>>>> origin/master
             System.out.println();
         }
     }
@@ -140,17 +130,11 @@ public class StartUI {
         Item item = new Item(name, desc, System.currentTimeMillis());
         boolean result = this.tracker.replace(id, item);
         if (result) {
-<<<<<<< HEAD
             String text = String.format("------------ Заявка с id : %s отредактирована ------------", id);
             System.out.println(text);
         } else {
             String text = String.format("------------ Заявка с id: %s не найдена ------------", id);
             System.out.println(text);
-=======
-            System.out.println("------------ Заявка с id " + id + " отредактирована ------------");
-        } else {
-            System.out.println("------------ Заявка с id " + id + " не найдена ------------");
->>>>>>> origin/master
         }
     }
 
@@ -162,17 +146,11 @@ public class StartUI {
         String id = this.input.ask("Введите id заявки для удаления");
         boolean result = this.tracker.delete(id);
         if (result) {
-<<<<<<< HEAD
             String text = String.format("------------ Заявка с id: %s удалена ------------", id);
             System.out.println(text);
         } else {
             String text = String.format("------------ Заявка с id: %s не найдена ------------", id);
             System.out.println(text);
-=======
-            System.out.println("------------ Заявка с id " + id + " удалена ------------");
-        } else {
-            System.out.println("------------ Заявка с id " + id + " не найдена ------------");
->>>>>>> origin/master
         }
     }
 
@@ -184,7 +162,6 @@ public class StartUI {
         String id = this.input.ask("Введите id заявки для поиска");
         Item item = this.tracker.findById(id);
         if (item != null) {
-<<<<<<< HEAD
             String nameText = String.format("Name: %s", item.getName());
             String descText = String.format("Description: %s", item.getDecs());
             System.out.println(nameText);
@@ -192,12 +169,6 @@ public class StartUI {
         } else {
             String text = String.format("------------ Заявка с id: %s не найдена ------------", id);
             System.out.println(text);
-=======
-            System.out.println("Name: " + item.getName());
-            System.out.println("Description: " + item.getDecs());
-        } else {
-            System.out.println("------------ Заявка с id " + id + " не найдена ------------");
->>>>>>> origin/master
         }
     }
 
@@ -210,7 +181,6 @@ public class StartUI {
         Item[] items = this.tracker.findByName(name);
         if (items.length != 0) {
             for (Item item : items) {
-<<<<<<< HEAD
                 String idText = String.format("ID: %s", item.getId());
                 String nameText = String.format("Name: %s", item.getName());
                 String descText = String.format("Description: %s", item.getDecs());
@@ -222,15 +192,6 @@ public class StartUI {
         } else {
             String text = String.format("------------ Заявки с именем %s не найдены ------------", name);
             System.out.println(text);
-=======
-                System.out.println("ID: " + item.getId());
-                System.out.println("Name: " + item.getName());
-                System.out.println("Description: " + item.getDecs());
-                System.out.println();
-            }
-        } else {
-            System.out.println("------------ Заявки с именем " + name + " не найдены ------------");
->>>>>>> origin/master
         }
     }
 
