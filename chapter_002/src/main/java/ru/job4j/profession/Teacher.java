@@ -17,5 +17,7 @@ public class Teacher {
     /**
      * Учить.
      */
-    public void teach(){};
+    public void teach() {
+
+    };
 }

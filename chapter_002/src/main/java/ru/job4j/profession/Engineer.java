@@ -17,5 +17,7 @@ public class Engineer extends Profession {
     /**
      * Ремонт
      */
-    public void repair(){};
+    public void repair() {
+
+    };
 }

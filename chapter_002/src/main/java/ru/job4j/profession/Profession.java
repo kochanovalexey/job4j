@@ -27,6 +27,8 @@ public class Profession {
     /**
      * Работать
      */
-    public void work(){};
+    public void work() {
+
+    };
 
 }

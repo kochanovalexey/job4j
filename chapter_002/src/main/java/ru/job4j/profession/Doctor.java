@@ -17,6 +17,8 @@ public class Doctor extends Profession {
     /**
      * Лечить
      */
-    public void heal(){};
+    public void heal() {
+
+    };
 
 }
