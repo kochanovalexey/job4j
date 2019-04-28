@@ -40,7 +40,7 @@ public class MenuTracker {
      *
      * @return длину массива
      */
-    public int getActionsLentgh() {
+    public int getActionsLength() {
         return this.actions.size();
     }
 
@@ -54,7 +54,6 @@ public class MenuTracker {
         this.actions.add(new DeleteItem());
         this.actions.add(new FindItemById());
         this.actions.add(new FindItemsByName());
-        this.actions.add(new ExitProgram());
     }
 
     /**
@@ -75,5 +74,13 @@ public class MenuTracker {
                 System.out.println(action.info());
             }
         }
+    }
+
+    public int[] getAllKey() {
+        int[] keys = new int[this.actions.size()];
+        for (int i = 0; i < this.actions.size(); i++) {
+            keys[i] = this.actions.get(i).key();
+        }
+        return keys;
     }
 }

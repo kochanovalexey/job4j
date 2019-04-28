@@ -39,12 +39,10 @@ public class StartUITest {
             .append(System.lineSeparator())
             .append("5. Найти заявку по имени")
             .append(System.lineSeparator())
-            .append("6. Выйти из программы")
-            .append(System.lineSeparator())
             .toString();
 
-    public void createInput(String[] value) {
-        input = new StubInput(value);
+    public void createInput(String[] value, int[] keys) {
+        input = new StubInput(value, keys);
     }
 
     @Before
@@ -59,7 +57,7 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        createInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
+        createInput(new String[]{"test name", "desc", "y"}, new int[]{0});   //создаём StubInput с последовательностью действий
         new StartUI(this.input, this.tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(this.tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
@@ -69,7 +67,7 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
         //создаём StubInput с последовательностью действий(производим замену заявки)
-        createInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
+        createInput(new String[]{item.getId(), "test replace", "заменили заявку", "y"}, new int[]{2});
         // создаём StartUI и вызываем метод init()
         new StartUI(this.input, this.tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
@@ -79,7 +77,7 @@ public class StartUITest {
     @Test
     public void whenDeleteThenTrackerHasNotContainsItem() {
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
-        createInput(new String[]{"3", item.getId(), "6"});
+        createInput(new String[]{item.getId(), "y"}, new int[]{3});
         new StartUI(this.input, this.tracker).init();
         Item expected = null;
         assertThat(this.tracker.findById(item.getId()), is(expected));
@@ -88,7 +86,7 @@ public class StartUITest {
     @Test
     public void whenShowAllThenPrintAllItems() {
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
-        createInput(new String[] {"1", "6"});
+        createInput(new String[] {"y"}, new int[]{1});
         new StartUI(this.input, this.tracker).init();
 
         assertThat(this.out.toString(),
@@ -104,7 +102,6 @@ public class StartUITest {
                                 .append(String.format("Description: %s", item.getDecs()))
                                 .append(System.lineSeparator())
                                 .append(System.lineSeparator())
-                                .append(menuText)
                                 .toString()
                 )
         );
@@ -113,7 +110,7 @@ public class StartUITest {
     @Test
     public void whenFindItemByNameThenPrintThisItem() {
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
-        createInput(new String[] {"5", "test name", "6"});
+        createInput(new String[] {"test name", "y"}, new int[]{5});
         new StartUI(this.input, this.tracker).init();
 
         assertThat(this.out.toString(),
@@ -129,7 +126,6 @@ public class StartUITest {
                                 .append(String.format("Description: %s", item.getDecs()))
                                 .append(System.lineSeparator())
                                 .append(System.lineSeparator())
-                                .append(menuText)
                                 .toString()
                 )
         );

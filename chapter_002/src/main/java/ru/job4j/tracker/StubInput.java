@@ -10,14 +10,22 @@ package ru.job4j.tracker;
 public class StubInput implements Input {
 
     private final String[] value;
-    private int position = 0;
+    private final int[] keys;
+    private int positionString = 0;
+    private int positionKeys = 0;
 
-    public StubInput(String[] value) {
+    public StubInput(String[] value, int[] keys) {
         this.value = value;
+        this.keys = keys;
     }
 
     @Override
     public String ask(String question) {
-        return this.value[this.position++];
+        return this.value[this.positionString++];
+    }
+
+    @Override
+    public int ask(String question, int[] range) {
+        return this.keys[this.positionKeys++];
     }
 }
