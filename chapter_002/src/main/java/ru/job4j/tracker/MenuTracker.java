@@ -47,13 +47,14 @@ public class MenuTracker {
     /**
      * Метод заполняет массив.
      */
-    public void fillActions() {
-        this.actions.add(new AddItem());
-        this.actions.add(new ShowItems());
-        this.actions.add(new UpdateItem());
-        this.actions.add(new DeleteItem());
-        this.actions.add(new FindItemById());
-        this.actions.add(new FindItemsByName());
+    public void fillActions(StartUI ui) {
+        this.actions.add(new AddItem(0, "Добавить новую заявку"));
+        this.actions.add(new ShowItems(1, "Показать все заявки"));
+        this.actions.add(new UpdateItem(2, "Редактировать заявку"));
+        this.actions.add(new DeleteItem(3, "Удалить заявку"));
+        this.actions.add(new FindItemById(4, "Найти заявку по ID"));
+        this.actions.add(new FindItemsByName(5, "Найти заявку по имени"));
+        this.actions.add(new ExitProgram(6, "Выйти из программы", ui));
     }
 
     /**

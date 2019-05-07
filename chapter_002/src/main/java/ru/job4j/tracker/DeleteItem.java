@@ -7,10 +7,10 @@ package ru.job4j.tracker;
  * @version 1
  * @since 22.04.2019
  */
-public class DeleteItem implements UserAction {
-    @Override
-    public int key() {
-        return 3;
+public class DeleteItem extends BaseAction {
+
+    public DeleteItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -27,8 +27,4 @@ public class DeleteItem implements UserAction {
         }
     }
 
-    @Override
-    public String info() {
-        return "3. Удалить заявку";
-    }
 }

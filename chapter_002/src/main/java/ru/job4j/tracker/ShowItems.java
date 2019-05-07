@@ -7,10 +7,10 @@ package ru.job4j.tracker;
  * @version 1
  * @since 22.04.2019
  */
-public class ShowItems implements UserAction {
-    @Override
-    public int key() {
-        return 1;
+public class ShowItems extends BaseAction {
+
+    public ShowItems(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -28,8 +28,4 @@ public class ShowItems implements UserAction {
         }
     }
 
-    @Override
-    public String info() {
-        return "1. Показать все заявки";
-    }
 }

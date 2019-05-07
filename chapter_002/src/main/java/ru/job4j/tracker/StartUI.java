@@ -9,6 +9,8 @@ package ru.job4j.tracker;
  */
 public class StartUI {
 
+    private boolean working = true;
+
     int[] range;
 
     /**
@@ -36,13 +38,17 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
+        menu.fillActions(this);
         range = menu.getAllKey();
         do {
             System.out.println("Меню.");
             menu.show();
             menu.select(input.ask("Введите пункт меню : ", range));
-        } while (!"y".equals(this.input.ask("Выйти?")));
+        } while (working);
+    }
+
+    public void exit() {
+        this.working = false;
     }
 
     /**

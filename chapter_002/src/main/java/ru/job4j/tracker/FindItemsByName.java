@@ -7,10 +7,10 @@ package ru.job4j.tracker;
  * @version 1
  * @since 22.04.2019
  */
-public class FindItemsByName implements UserAction {
-    @Override
-    public int key() {
-        return 5;
+public class FindItemsByName extends BaseAction {
+
+    public FindItemsByName(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -34,8 +34,4 @@ public class FindItemsByName implements UserAction {
         }
     }
 
-    @Override
-    public String info() {
-        return "5. Найти заявку по имени";
-    }
 }

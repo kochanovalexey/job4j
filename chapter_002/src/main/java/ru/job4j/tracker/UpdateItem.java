@@ -7,10 +7,10 @@ package ru.job4j.tracker;
  * @version 1
  * @since 22.04.2019
  */
-public class UpdateItem implements UserAction {
-    @Override
-    public int key() {
-        return 2;
+public class UpdateItem extends BaseAction {
+
+    public UpdateItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -30,8 +30,4 @@ public class UpdateItem implements UserAction {
         }
     }
 
-    @Override
-    public String info() {
-        return "2. Редактировать заявку";
-    }
 }
