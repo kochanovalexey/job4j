@@ -25,7 +25,7 @@ public class BishopBlack implements Figure {
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImposibleMoveException {
         if (!isDiagonal(source, dest)) {
-            throw new ImposibleMoveException("Слон движется не по диагонали");
+            throw new ImposibleMoveException("Слон может двигаться только по диагонали");
         }
 
         int size = Math.abs(source.x - dest.x);
