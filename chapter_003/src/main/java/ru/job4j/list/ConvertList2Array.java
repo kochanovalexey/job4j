@@ -1,6 +1,8 @@
 package ru.job4j.list;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Class Класс, конвертирующий ArrayList в двухмерный массив
@@ -31,5 +33,20 @@ public class ConvertList2Array {
             }
         }
         return array;
+    }
+
+    /**
+     * Метод, конвертирующий List<int[]> в List<Integer>
+     * @param list - входящий List<int[]>
+     * @return - List<Integer>
+     */
+    public List<Integer> convert (List<int[]> list) {
+        List<Integer> listInteger = new ArrayList<>();
+        for (int[] array : list) {
+            for (int value : array) {
+                listInteger.add(value);
+            }
+        }
+        return listInteger;
     }
 }
