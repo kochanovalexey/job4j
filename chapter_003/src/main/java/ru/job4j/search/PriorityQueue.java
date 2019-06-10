@@ -21,14 +21,18 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        int count = this.tasks.size();
-        for (int i = 0; i < count; i++) {
-            if (this.tasks.get(i).getPriority() >= task.getPriority()) {
-                count = i;
-                break;
+        if (tasks.size() == 0) {
+            this.tasks.add(task);
+            return;
+        }
+
+        for (int i = 0; i < this.tasks.size(); i++) {
+            if (this.tasks.get(i).getPriority() > task.getPriority()) {
+                this.tasks.add(i, task);
+                return;
             }
         }
-        this.tasks.add(count, task);
+        this.tasks.add(task);
     }
 
     public Task take() {
