@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 /**
  * Class Класс, который показывает все заявки.
  *
@@ -15,7 +17,7 @@ public class ShowItems extends BaseAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        Item[] items = tracker.findAll();
+        List<Item> items = tracker.findAll();
         System.out.println("------------ Список всех заявок ------------");
         for (Item item : items) {
             String idText = String.format("ID: %s", item.getId());

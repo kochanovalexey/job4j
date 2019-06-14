@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 /**
  * Class Класс поиска заявки по имени.
  *
@@ -17,8 +19,8 @@ public class FindItemsByName extends BaseAction {
     public void execute(Input input, Tracker tracker) {
         System.out.println("------------ Поиск заявок по имени --------------");
         String name = input.ask("Введите имя заявок для поиска");
-        Item[] items = tracker.findByName(name);
-        if (items.length != 0) {
+        List<Item> items = tracker.findByName(name);
+        if (items.size() != 0) {
             for (Item item : items) {
                 String idText = String.format("ID: %s", item.getId());
                 String nameText = String.format("Name: %s", item.getName());
