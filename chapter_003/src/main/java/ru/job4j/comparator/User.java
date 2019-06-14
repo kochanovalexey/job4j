@@ -38,4 +38,12 @@ public class User implements Comparable {
         int result = age - entry.age;
         return result !=0 ? result / Math.abs(result) : result;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
 }
