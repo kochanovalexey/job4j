@@ -21,7 +21,7 @@ public class UserConvert {
     public HashMap<Integer, User> process(List<User> list) {
         HashMap<Integer, User> hashMap = new HashMap<>();
         ListIterator<User> listIterator = list.listIterator();
-        while(listIterator.hasNext()) {
+        while (listIterator.hasNext()) {
             User user = listIterator.next();
             hashMap.put(user.getId(), user);
         }

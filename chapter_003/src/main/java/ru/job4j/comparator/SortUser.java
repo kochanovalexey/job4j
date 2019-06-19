@@ -15,7 +15,7 @@ public class SortUser {
      * @param users - список User
      * @return - TreeSet User
      */
-    public Set<User> sort (List<User> users) {
+    public Set<User> sort(List<User> users) {
         TreeSet<User> treeSet = new TreeSet<>();
         treeSet.addAll(users);
         return treeSet;
@@ -26,7 +26,7 @@ public class SortUser {
      * @param users - входящий список User
      * @return - отсортированный список User
      */
-    public List<User> sortNameLength (List<User> users) {
+    public List<User> sortNameLength(List<User> users) {
         class LengthComparator implements Comparator {
             @Override
             public int compare(Object o1, Object o2) {
@@ -44,7 +44,7 @@ public class SortUser {
      * Сортировка списка User по полям name и age
      * @return - отсортированный список User
      */
-    public List<User> sortByAllFields (List<User> users) {
+    public List<User> sortByAllFields(List<User> users) {
         class AllFieldComparator implements Comparator {
             @Override
             public int compare(Object o1, Object o2) {

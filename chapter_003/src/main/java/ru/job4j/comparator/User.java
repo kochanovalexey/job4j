@@ -36,7 +36,7 @@ public class User implements Comparable {
     public int compareTo(Object o) {
         User entry = (User) o;
         int result = age - entry.age;
-        return result !=0 ? result / Math.abs(result) : result;
+        return result != 0 ? result / Math.abs(result) : result;
     }
 
     public String getName() {
