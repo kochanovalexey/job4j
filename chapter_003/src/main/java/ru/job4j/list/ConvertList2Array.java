@@ -19,7 +19,7 @@ public class ConvertList2Array {
      * @return - двумерный массив
      */
     public int[][] toArray(List<Integer> list, int rows) {
-        int cells = (int) Math.ceil((double)list.size() / rows);
+        int cells = (int) Math.ceil((double) list.size() / rows);
         int[][] array = new int[rows][cells];
         int firstIndex = 0;
         int secondIndex = 0;
@@ -40,7 +40,7 @@ public class ConvertList2Array {
      * @param list - входящий List<int[]>
      * @return - List<Integer>
      */
-    public List<Integer> convert (List<int[]> list) {
+    public List<Integer> convert(List<int[]> list) {
         List<Integer> listInteger = new ArrayList<>();
         for (int[] array : list) {
             for (int value : array) {

@@ -29,9 +29,9 @@ public class UserConvertTest {
         );
         HashMap<Integer, User> result = userConvert.process(list);
         HashMap<Integer, User> expect = new HashMap<>();
-        expect.put(firstUser.getId(),firstUser);
-        expect.put(secondUser.getId(),secondUser);
-        expect.put(thirdUser.getId(),thirdUser);
+        expect.put(firstUser.getId(), firstUser);
+        expect.put(secondUser.getId(), secondUser);
+        expect.put(thirdUser.getId(), thirdUser);
         assertThat(result, is(expect));
     }
 
@@ -46,8 +46,8 @@ public class UserConvertTest {
         );
         HashMap<Integer, User> result = userConvert.process(list);
         HashMap<Integer, User> expect = new HashMap<>();
-        expect.put(firstUser.getId(),firstUser);
-        expect.put(secondUser.getId(),secondUser);
+        expect.put(firstUser.getId(), firstUser);
+        expect.put(secondUser.getId(), secondUser);
         assertThat(result, is(expect));
     }
 

@@ -15,7 +15,7 @@ public class MultiMaxTest {
      * Тест метода max, когда первое наибольшее число
      */
     @Test
-    public void whenFirstMax(){
+    public void whenFirstMax() {
         MultiMax multiMax = new MultiMax();
         int max = multiMax.max(3, 2, 1);
         assertThat(max, is(3));
@@ -25,7 +25,7 @@ public class MultiMaxTest {
      * Тест метода max, когда второе наибольшее число
      */
     @Test
-    public void whenSecondMax(){
+    public void whenSecondMax() {
         MultiMax multiMax = new MultiMax();
         int max = multiMax.max(2, 4, 3);
         assertThat(max, is(4));
@@ -35,7 +35,7 @@ public class MultiMaxTest {
      * Тест метода max, когда третье наибольшее число
      */
     @Test
-    public void whenThirdMax(){
+    public void whenThirdMax() {
         MultiMax multiMax = new MultiMax();
         int max = multiMax.max(1, 2, 3);
         assertThat(max, is(3));
@@ -45,10 +45,9 @@ public class MultiMaxTest {
      * Тест метода max, когда все числа равны
      */
     @Test
-    public void whenAllMax(){
+    public void whenAllMax() {
         MultiMax multiMax = new MultiMax();
         int max = multiMax.max(1, 1, 1);
         assertThat(max, is(1));
     }
-
 }
