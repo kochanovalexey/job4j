@@ -24,8 +24,7 @@ public class Bank {
      * @param user - пользователь
      */
     public void addUser(User user) {
-        //this.users.putIfAbsent(user, new ArrayList<Account>());
-        this.users.put(user, new ArrayList<Account>());
+        this.users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     /**
@@ -43,7 +42,7 @@ public class Bank {
      */
     public void addAccountToUser(String passport, Account account) {
         for (Map.Entry<User, ArrayList<Account>> user : this.users.entrySet()) {
-            if (user.getKey().getPassport() == passport) {
+            if (passport.equals(user.getKey().getPassport())) {
                 if (!(user.getValue().contains(account))) {
                     user.getValue().add(account);
                 }
@@ -59,9 +58,10 @@ public class Bank {
      */
     public void deleteAccountFromUser(String passport, Account account) {
         for (Map.Entry<User, ArrayList<Account>> user : this.users.entrySet()) {
-            if (user.getKey().getPassport() == passport) {
-                if (user.getValue().contains(account)) {
-                    user.getValue().remove(account);
+            if (passport.equals(user.getKey().getPassport())) {
+                int index = user.getValue().indexOf(account);
+                if (!(index == -1)) {
+                    user.getValue().remove(index);
                 }
                 return;
             }
@@ -76,7 +76,7 @@ public class Bank {
     public List<Account> getUserAccounts(String passport) {
         List<Account> accounts = new ArrayList<>();
         for (Map.Entry<User, ArrayList<Account>> user : this.users.entrySet()) {
-            if (user.getKey().getPassport() == passport) {
+            if (passport.equals(user.getKey().getPassport())) {
                 accounts = user.getValue();
                 break;
             }
@@ -118,7 +118,7 @@ public class Bank {
     public Account getUserAccount(List<Account> accounts, String requisite) {
         Account srcAccount = null;
         for (Account account : accounts) {
-            if (account.getRequisites() == requisite) {
+            if (requisite.equals(account.getRequisites())) {
                 srcAccount = account;
                 break;
             }
