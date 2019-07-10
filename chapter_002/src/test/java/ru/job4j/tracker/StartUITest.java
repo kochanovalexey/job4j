@@ -60,7 +60,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         createInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
-        new StartUI(this.input, this.tracker).init();     //   создаём StartUI и вызываем метод init()
+        new StartUI(this.input, this.tracker, System.out::println).init();     //   создаём StartUI и вызываем метод init()
         assertThat(this.tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
 
@@ -71,7 +71,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(производим замену заявки)
         createInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         // создаём StartUI и вызываем метод init()
-        new StartUI(this.input, this.tracker).init();
+        new StartUI(this.input, this.tracker, System.out::println).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.tracker.findById(item.getId()).getName(), is("test replace"));
     }
@@ -80,7 +80,7 @@ public class StartUITest {
     public void whenDeleteThenTrackerHasNotContainsItem() {
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
         createInput(new String[]{"3", item.getId(), "6"});
-        new StartUI(this.input, this.tracker).init();
+        new StartUI(this.input, this.tracker, System.out::println).init();
         Item expected = null;
         assertThat(this.tracker.findById(item.getId()), is(expected));
     }
@@ -89,7 +89,7 @@ public class StartUITest {
     public void whenShowAllThenPrintAllItems() {
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
         createInput(new String[] {"1", "6"});
-        new StartUI(this.input, this.tracker).init();
+        new StartUI(this.input, this.tracker, System.out::println).init();
 
         assertThat(this.out.toString(),
                 is(
@@ -103,7 +103,6 @@ public class StartUITest {
                                 .append(System.lineSeparator())
                                 .append(String.format("Description: %s", item.getDecs()))
                                 .append(System.lineSeparator())
-                                .append(System.lineSeparator())
                                 .append(menuText)
                                 .toString()
                 )
@@ -114,7 +113,7 @@ public class StartUITest {
     public void whenFindItemByNameThenPrintThisItem() {
         Item item = this.tracker.add(new Item("test name", "desc", 123L));
         createInput(new String[] {"5", "test name", "6"});
-        new StartUI(this.input, this.tracker).init();
+        new StartUI(this.input, this.tracker, System.out::println).init();
 
         assertThat(this.out.toString(),
                 is(
@@ -127,7 +126,6 @@ public class StartUITest {
                                 .append(String.format("Name: %s", item.getName()))
                                 .append(System.lineSeparator())
                                 .append(String.format("Description: %s", item.getDecs()))
-                                .append(System.lineSeparator())
                                 .append(System.lineSeparator())
                                 .append(menuText)
                                 .toString()

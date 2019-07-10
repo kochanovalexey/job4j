@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Class Класс поиска заявки по имени.
@@ -16,8 +17,8 @@ public class FindItemsByName extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("------------ Поиск заявок по имени --------------");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("------------ Поиск заявок по имени --------------");
         String name = input.ask("Введите имя заявок для поиска");
         List<Item> items = tracker.findByName(name);
         if (items.size() != 0) {
@@ -25,14 +26,13 @@ public class FindItemsByName extends BaseAction {
                 String idText = String.format("ID: %s", item.getId());
                 String nameText = String.format("Name: %s", item.getName());
                 String descText = String.format("Description: %s", item.getDecs());
-                System.out.println(idText);
-                System.out.println(nameText);
-                System.out.println(descText);
-                System.out.println();
+                output.accept(idText);
+                output.accept(nameText);
+                output.accept(descText);
             }
         } else {
             String text = String.format("------------ Заявки с именем %s не найдены ------------", name);
-            System.out.println(text);
+            output.accept(text);
         }
     }
 

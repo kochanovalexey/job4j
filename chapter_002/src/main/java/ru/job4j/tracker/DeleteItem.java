@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * Class Класс удаления заявки.
  *
@@ -14,16 +16,16 @@ public class DeleteItem extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("------------ Удаление заявки --------------");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("------------ Удаление заявки --------------");
         String id = input.ask("Введите id заявки для удаления");
         boolean result = tracker.delete(id);
         if (result) {
             String text = String.format("------------ Заявка с id: %s удалена ------------", id);
-            System.out.println(text);
+            output.accept(text);
         } else {
             String text = String.format("------------ Заявка с id: %s не найдена ------------", id);
-            System.out.println(text);
+            output.accept(text);
         }
     }
 
