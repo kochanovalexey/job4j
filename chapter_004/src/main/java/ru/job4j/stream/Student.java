@@ -1,7 +1,7 @@
 package ru.job4j.stream;
 
 /**
- * Class Класс
+ * Class Класс, описывающий Студентов
  *
  * @author akochanov
  * @version 1
