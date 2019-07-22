@@ -33,4 +33,26 @@ public class ProfilesTest {
         );
         assertThat(result, is(expect));
     }
+
+    @Test
+    public void whenListProfilesCollectWhenListAddressSortedAndUnique() {
+        Profiles prof = new Profiles();
+        Address address1 = new Address("Moscow", "Leningradskay", 107, 2);
+        Address address2 = new Address("Kiev", "Maydan", 16, 34);
+        Address address3 = new Address("Saint-Petersburg", "Koroleva", 7, 798);
+        Address address4 = new Address("Saint-Petersburg", "Koroleva", 7, 798);
+        List<Profile> profiles = List.of(
+                new Profile(address1),
+                new Profile(address2),
+                new Profile(address3),
+                new Profile(address4)
+                );
+        List<Address> result = prof.collectUniqueAndSorted(profiles);
+        List<Address> expect = List.of(
+                address2,
+                address1,
+                address3
+        );
+        assertThat(result, is(expect));
+    }
 }
