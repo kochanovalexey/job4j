@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -20,5 +21,17 @@ public class School {
      */
     List<Student> collect(List<Student> students, Predicate<Student> predict) {
         return students.stream().filter(predict).collect(Collectors.toList());
+    }
+    /**
+     * Метод Преобразующий список студентов в карту
+     * @param students - список студентов
+     * @return - карта студентов
+     */
+    Map<String, Student> collectToMap(List<Student> students) {
+        return students.stream().distinct().collect(
+                Collectors.toMap(
+                        s -> s.getSurname(),
+                        s -> s
+                ));
     }
 }
