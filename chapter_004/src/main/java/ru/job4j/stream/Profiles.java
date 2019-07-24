@@ -22,7 +22,7 @@ public class Profiles {
     }
 
     List<Address> collectUniqueAndSorted(List<Profile> profiles) {
-        return profiles.stream().map(profile -> profile.getAddress()).distinct().sorted(new AddressComparator()).collect(Collectors.toList());
+        return profiles.stream().map(profile -> profile.getAddress()).sorted(new AddressComparator()).distinct().collect(Collectors.toList());
     }
 
     class AddressComparator implements Comparator<Address> {
