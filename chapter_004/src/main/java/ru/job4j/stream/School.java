@@ -28,7 +28,7 @@ public class School {
      * @return - карта студентов
      */
     Map<String, Student> collectToMap(List<Student> students) {
-        return students.stream().distinct().collect(
+        return students.stream().collect(
                 Collectors.toMap(
                         s -> s.getSurname(),
                         s -> s
