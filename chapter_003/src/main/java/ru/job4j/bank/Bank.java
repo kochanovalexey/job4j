@@ -41,14 +41,10 @@ public class Bank {
      * @param account - аккаунт
      */
     public void addAccountToUser(String passport, Account account) {
-        for (Map.Entry<User, ArrayList<Account>> user : this.users.entrySet()) {
-            if (passport.equals(user.getKey().getPassport())) {
-                if (!(user.getValue().contains(account))) {
-                    user.getValue().add(account);
-                }
-                return;
-            }
-        }
+        this.users.entrySet().stream()
+                .filter(user -> passport.equals(user.getKey().getPassport()))
+                .filter(user -> !(user.getValue().contains(account)))
+                .forEach(user -> user.getValue().add(account));
     }
 
     /**
@@ -57,15 +53,16 @@ public class Bank {
      * @param account - акаунт
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        for (Map.Entry<User, ArrayList<Account>> user : this.users.entrySet()) {
-            if (passport.equals(user.getKey().getPassport())) {
-                int index = user.getValue().indexOf(account);
-                if (!(index == -1)) {
-                    user.getValue().remove(index);
-                }
-                return;
-            }
-        }
+        this.users.entrySet().stream().
+                forEach(user -> {
+                            if (passport.equals(user.getKey().getPassport())) {
+                                int index = user.getValue().indexOf(account);
+                                if (!(index == -1)) {
+                                    user.getValue().remove(index);
+                                }
+                                return;
+                            }
+                });
     }
 
     /**
@@ -75,12 +72,12 @@ public class Bank {
      */
     public List<Account> getUserAccounts(String passport) {
         List<Account> accounts = new ArrayList<>();
-        for (Map.Entry<User, ArrayList<Account>> user : this.users.entrySet()) {
-            if (passport.equals(user.getKey().getPassport())) {
-                accounts = user.getValue();
-                break;
-            }
-        }
+        accounts = this.users.entrySet().stream()
+                .filter(user -> passport.equals(user.getKey().getPassport()))
+                .findFirst()
+                .get()
+                .getValue();
+
         return accounts;
     }
 
@@ -117,12 +114,10 @@ public class Bank {
      */
     public Account getUserAccount(List<Account> accounts, String requisite) {
         Account srcAccount = null;
-        for (Account account : accounts) {
-            if (requisite.equals(account.getRequisites())) {
-                srcAccount = account;
-                break;
-            }
-        }
+        srcAccount = accounts.stream()
+                .filter(account -> requisite.equals(account.getRequisites()))
+                .findFirst()
+                .get();
         return srcAccount;
     }
 }
