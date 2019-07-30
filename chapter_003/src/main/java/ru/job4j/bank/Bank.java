@@ -71,14 +71,12 @@ public class Bank {
      * @return - список аккаунтов
      */
     public List<Account> getUserAccounts(String passport) {
-        List<Account> accounts = new ArrayList<>();
-        accounts = this.users.entrySet().stream()
+        Map.Entry<User, ArrayList<Account>> entry = this.users.entrySet().stream()
                 .filter(user -> passport.equals(user.getKey().getPassport()))
                 .findFirst()
-                .get()
-                .getValue();
+                .get();
 
-        return accounts;
+        return entry != null ? entry.getValue() : new ArrayList<>();
     }
 
     /**
