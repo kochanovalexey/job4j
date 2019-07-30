@@ -71,12 +71,11 @@ public class Bank {
      * @return - список аккаунтов
      */
     public List<Account> getUserAccounts(String passport) {
-        Map.Entry<User, ArrayList<Account>> entry = this.users.entrySet().stream()
+        return this.users.entrySet().stream()
                 .filter(user -> passport.equals(user.getKey().getPassport()))
                 .findFirst()
-                .get();
-
-        return entry != null ? entry.getValue() : new ArrayList<>();
+                .map(Map.Entry::getValue)
+                .orElse(new ArrayList<>());
     }
 
     /**
@@ -111,11 +110,9 @@ public class Bank {
      * @return - искомый аккаунт
      */
     public Account getUserAccount(List<Account> accounts, String requisite) {
-        Account srcAccount = null;
-        srcAccount = accounts.stream()
+        return accounts.stream()
                 .filter(account -> requisite.equals(account.getRequisites()))
                 .findFirst()
-                .get();
-        return srcAccount;
+                .orElse(null);
     }
 }
