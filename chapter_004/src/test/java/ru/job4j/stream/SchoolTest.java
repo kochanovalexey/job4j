@@ -101,4 +101,31 @@ public class SchoolTest {
         );
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void whenListStudentsThenListStudentsWithAScoreAbove80() {
+        School school = new School();
+        Student student1 = new Student(81, "Petrov", "Oleg");
+        Student student2 = new Student(90, "Vasilev", "Ivan");
+        Student student3 = new Student(77, "Bochenev", "Sergey");
+        Student student4 = new Student(83, "Novachilova", "Inna");
+        Student student5 = new Student(56, "Gorkii", "Aleksey");
+        Student student6 = new Student(98, "Durov", "Ivan");
+        List<Student> students = List.of(
+                student1,
+                student2,
+                student3,
+                student4,
+                student5,
+                student6
+        );
+        List<Student> result = school.levelOf(students, 80);
+        List<Student> expected = List.of(
+                student6,
+                student2,
+                student4,
+                student1
+        );
+        assertThat(result, is(expected));
+    }
 }

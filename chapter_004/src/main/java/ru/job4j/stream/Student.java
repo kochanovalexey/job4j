@@ -38,6 +38,10 @@ public class Student {
     }
 
     public String getSurname() {
-        return surname;
+        return this.surname;
+    }
+
+    public int getScore() {
+        return this.score;
     }
 }
