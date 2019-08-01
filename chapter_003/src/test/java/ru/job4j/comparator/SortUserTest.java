@@ -25,20 +25,22 @@ public class SortUserTest {
         User fourthUser = new User("Oleg", 22);
         User fifthUser = new User("Serdey", 22);
 
-        List<User> users = new ArrayList<>();
-        users.add(firstUser);
-        users.add(secondUser);
-        users.add(thirdUser);
-        users.add(fourthUser);
-        users.add(fifthUser);
+        List<User> users = List.of(
+                firstUser,
+                secondUser,
+                thirdUser,
+                fourthUser,
+                fifthUser
+        );
 
-        Set<User> expected = new TreeSet<>();
-        expected.add(fourthUser);
-        expected.add(fifthUser);
-        expected.add(firstUser);
-        expected.add(secondUser);
-        expected.add(thirdUser);
-
+        Set<User> expected = new TreeSet();
+        expected.addAll(List.of(
+                fourthUser,
+                fifthUser,
+                firstUser,
+                secondUser,
+                thirdUser
+        ));
         Set<User> result = sortUser.sort(users);
         assertThat(result, is(expected));
     }
@@ -63,12 +65,20 @@ public class SortUserTest {
         User fifthUser = new User("Serdey", 22);
 
         List<User> users = Arrays.asList(
-                firstUser, secondUser, thirdUser, fourthUser, fifthUser
+                firstUser,
+                secondUser,
+                thirdUser,
+                fourthUser,
+                fifthUser
         );
 
         List<User> result = sortUser.sortNameLength(users);
-        List<User> expected = Arrays.asList(
-            secondUser, fourthUser, firstUser, fifthUser, thirdUser
+        List<User> expected = List.of(
+                secondUser,
+                fourthUser,
+                firstUser,
+                fifthUser,
+                thirdUser
         );
         assertThat(result, is(expected));
     }
@@ -84,12 +94,20 @@ public class SortUserTest {
         User fifthUser = new User("Serdey", 22);
 
         List<User> users = Arrays.asList(
-                firstUser, secondUser, thirdUser, fourthUser, fifthUser
+                firstUser,
+                secondUser,
+                thirdUser,
+                fourthUser,
+                fifthUser
         );
 
         List<User> result = sortUser.sortByAllFields(users);
-        List<User> expected = Arrays.asList(
-                fourthUser, secondUser, thirdUser, fifthUser, firstUser
+        List<User> expected = List.of(
+                fourthUser,
+                secondUser,
+                thirdUser,
+                fifthUser,
+                firstUser
         );
         assertThat(result, is(expected));
     }

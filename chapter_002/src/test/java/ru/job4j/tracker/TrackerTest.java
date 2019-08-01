@@ -71,8 +71,9 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         List<Item> result = tracker.findByName("test1");
-        List<Item> expected = Arrays.asList(
-                item, item2
+        List<Item> expected = List.of(
+                item,
+                item2
         );
         assertThat(result, is(expected));
     }
@@ -87,8 +88,10 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         List<Item> result = tracker.findAll();
-        List<Item> expected = Arrays.asList(
-                item, item1, item2
+        List<Item> expected = List.of(
+                item,
+                item1,
+                item2
         );
         assertThat(result, is(expected));
     }

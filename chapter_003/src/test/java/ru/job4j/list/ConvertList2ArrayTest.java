@@ -60,11 +60,16 @@ public class ConvertList2ArrayTest {
     @Test
     public void whenConvertTwoArraysOnListThenOneList() {
         ConvertList2Array list = new ConvertList2Array();
-        List<int[]> arrayList = new ArrayList<>();
-        arrayList.add(new int[]{1, 2});
-        arrayList.add(new int[]{3, 4, 5});
-        List<Integer> expected = Arrays.asList(
-                1, 2, 3, 4, 5
+        List<int[]> arrayList = List.of(
+                new int[]{1, 2},
+                new int[]{3, 4, 5}
+        );
+        List<Integer> expected = List.of(
+                1,
+                2,
+                3,
+                4,
+                5
         );
         List<Integer> result = list.convert(arrayList);
         assertThat(result, is(expected));
@@ -73,12 +78,21 @@ public class ConvertList2ArrayTest {
     @Test
     public void whenConvertThreeArraysOnListThenOneList() {
         ConvertList2Array list = new ConvertList2Array();
-        List<int[]> arrayList = new ArrayList<>();
-        arrayList.add(new int[]{1, 2});
-        arrayList.add(new int[]{3, 4, 5});
-        arrayList.add(new int[]{6, 7, 8, 9});
-        List<Integer> expected = Arrays.asList(
-                1, 2, 3, 4, 5, 6, 7, 8, 9
+        List<int[]> arrayList = List.of(
+                new int[]{1, 2},
+                new int[]{3, 4, 5},
+                new int[]{6, 7, 8, 9}
+        );
+        List<Integer> expected = List.of(
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
         );
         List<Integer> result = list.convert(arrayList);
         assertThat(result, is(expected));
@@ -87,8 +101,9 @@ public class ConvertList2ArrayTest {
     @Test
     public void whenConvertEmptyArraysOnListThenOneList() {
         ConvertList2Array list = new ConvertList2Array();
-        List<int[]> arrayList = new ArrayList<>();
-        arrayList.add(new int[]{});
+        List<int[]> arrayList = List.of(
+                new int[]{}
+        );
         List<Integer> expected = Arrays.asList();
         List<Integer> result = list.convert(arrayList);
         assertThat(result, is(expected));
