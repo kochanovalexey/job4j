@@ -23,9 +23,9 @@ public class PhoneDictionary {
      * @return Список подощедщих пользователей.
      */
     public List<Person> find(String key) {
-        List<Person> result = new ArrayList<>();
+        var result = new ArrayList<Person>();
 
-        for (Person person : persons) {
+        for (var person : persons) {
             if (key.contains(person.getSurname()) || key.contains(person.getName()) || key.contains(person.getAddress()) || key.contains(person.getPhone())) {
                 result.add(person);
             }
