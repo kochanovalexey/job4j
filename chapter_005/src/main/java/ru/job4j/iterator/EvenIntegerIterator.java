@@ -18,7 +18,7 @@ public class EvenIntegerIterator implements Iterator {
     /**
      * Индекс
      */
-    private int index = 0;
+    private int index;
 
     /**
      * Конструктор класса
@@ -26,11 +26,13 @@ public class EvenIntegerIterator implements Iterator {
      */
     public EvenIntegerIterator(final int[] numbers) {
         this.numbers = numbers;
+        this.index = 0;
+        this.index = returnNextIndex();
     }
 
     @Override
     public boolean hasNext() {
-        return returnNextIndex() != -1;
+        return index != -1;
     }
 
     @Override
@@ -38,8 +40,9 @@ public class EvenIntegerIterator implements Iterator {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
+        int number = this.numbers[this.index++];
         this.index = returnNextIndex();
-        return this.numbers[this.index++];
+        return number;
     }
 
     /**
