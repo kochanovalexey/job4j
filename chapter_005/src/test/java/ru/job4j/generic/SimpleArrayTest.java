@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -63,5 +64,15 @@ public class SimpleArrayTest {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(6));
         assertThat(it.hasNext(), is(false));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void shouldReturnEvenNumbersSequentially() {
+        simpleArray.add(3);
+        simpleArray.add(5);
+        simpleArray.add(8);
+        simpleArray.add(32);
+        simpleArray.add(31);
+        simpleArray.add(36);
     }
 }

@@ -33,11 +33,7 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param model - значение
      */
     public void add(T model) {
-        try {
-            array[index++] = model;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(e);
-        }
+        array[index++] = model;
     }
 
     /**
@@ -46,10 +42,8 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param model - значение
      */
     public void set(int index, T model) {
-        try {
-            array[this.index <= index ? this.index++ : index] = model;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(e);
+        if(index < this.index) {
+            array[index] = model;
         }
     }
 
@@ -58,10 +52,7 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param index - индекс
      */
     public void remove(int index) {
-        while (this.index > index) {
-            array[index] = array[index + 1];
-            index++;
-        }
+        System.arraycopy(this.array, index + 1, this.array, index, this.index - index);
     }
 
     /**
@@ -70,12 +61,7 @@ public class SimpleArray<T> implements Iterable<T> {
      * @return - возращаемое значение
      */
     public T get(int index) {
-        try {
-            return (T) array[index];
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(e);
-            return null;
-        }
+        return (T) array[index];
     }
 
     @Override
