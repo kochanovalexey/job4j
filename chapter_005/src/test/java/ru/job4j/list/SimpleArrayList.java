@@ -25,14 +25,13 @@ public class SimpleArrayList<E> {
      * Реализовать метод удаления первого элемент в списке.
      */
     public E delete() {
-        if (this.first == null) {
-            return null;
+        E data = null;
+        if (this.first != null) {
+            data = this.first.data;
+            this.first = this.first.next;
+            size--;
         }
-
-        Node<E> link = this.first;
-        this.first = link.next;
-        size--;
-        return link.data;
+        return data;
     }
 
     /**
