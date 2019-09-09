@@ -46,6 +46,19 @@ public class LinkedListContainer<E> implements Iterable<E> {
         return result.data;
     }
 
+    /**
+     * Метод удаляет последнийэлемент списка
+     * @return - удаляемый элемент
+     */
+    public E removeLast() {
+        if (this.first == null) {
+            throw new NoSuchElementException();
+        }
+        E data = this.first.data;
+        this.first = this.first.next;
+        return data;
+    }
+
     @Override
     public Iterator<E> iterator() {
         LinkedListContainer<E> list = this;
