@@ -7,8 +7,12 @@ package ru.job4j.list;
  * @version 1
  * @since 09.09.2019
  */
-public class SimpleStack<T> extends LinkedListContainer<T> {
+public class SimpleStack<T> {
 
+    /**
+     * Контейнер
+     */
+    LinkedListContainer<T> list = new LinkedListContainer<>();
     /**
      * Текущий индекс
      */
@@ -19,7 +23,7 @@ public class SimpleStack<T> extends LinkedListContainer<T> {
      * @return - последний элемент коллекции
      */
     public T poll() {
-        T data = super.removeLast();
+        T data = list.removeLast();
         this.index--;
         return data;
     }
@@ -29,7 +33,7 @@ public class SimpleStack<T> extends LinkedListContainer<T> {
      * @param value - значение
      */
     public void push(T value) {
-        super.add(value);
+        list.add(value);
         this.index++;
     }
 }

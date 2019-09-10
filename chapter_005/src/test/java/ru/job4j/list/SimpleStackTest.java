@@ -21,9 +21,9 @@ public class SimpleStackTest {
     @Before
     public void beforeTest() {
         simpleStack = new SimpleStack<>();
-        simpleStack.add(1);
-        simpleStack.add(2);
-        simpleStack.add(3);
+        simpleStack.push(1);
+        simpleStack.push(2);
+        simpleStack.push(3);
     }
 
     @Test
