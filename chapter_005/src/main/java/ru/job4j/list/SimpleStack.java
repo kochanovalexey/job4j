@@ -36,4 +36,8 @@ public class SimpleStack<T> {
         list.add(value);
         this.index++;
     }
+
+    public int size() {
+        return this.index;
+    }
 }

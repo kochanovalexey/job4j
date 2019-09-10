@@ -59,6 +59,25 @@ public class LinkedListContainer<E> implements Iterable<E> {
         return data;
     }
 
+    public E removeFirst() {
+        if (this.first == null) {
+            throw new NoSuchElementException();
+        }
+        Node<E> currentNode = this.first;
+        if (currentNode.next == null) {
+            this.first = null;
+        } else {
+            while (currentNode.next.next != null) {
+                currentNode = currentNode.next;
+            }
+        }
+        E data = currentNode.next.data;
+        currentNode.next = null;
+        return data;
+    }
+
+
+
     @Override
     public Iterator<E> iterator() {
         LinkedListContainer<E> list = this;
