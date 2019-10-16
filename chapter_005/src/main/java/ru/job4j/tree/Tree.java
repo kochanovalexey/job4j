@@ -17,7 +17,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     /**
      * Root
      */
-    Node<E> root;
+    private Node<E> root;
 
     public Tree(E value) {
         this.root = new Node<>(value);
