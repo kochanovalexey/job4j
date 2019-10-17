@@ -1,9 +1,6 @@
 package ru.job4j.tree;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Class Класс Tree
@@ -50,6 +47,26 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
             }
         }
         return rsl;
+    }
+
+    /**
+     * Проверка на бинарность
+     * @return - результат
+     */
+    public boolean isBinary() {
+        Iterator<E> iterator = this.iterator();
+        boolean result = true;
+        while (iterator.hasNext()) {
+            E value = iterator.next();
+            Optional<Node<E>> rsl = this.findBy(value);
+            Node<E> node = rsl.get();
+            List<Node<E>> children = node.leaves();
+            if (children.size() > 2) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     @Override
