@@ -9,12 +9,12 @@ import java.util.*;
  * @version 1
  * @since 21.09.2019
  */
-public class SimpleHashMap<K,V> implements Iterable<V> {
+public class SimpleHashMap<K, V> implements Iterable<V> {
 
     /**
      * Контейнер
      */
-    private Entry<K,V>[] container;
+    private Entry<K, V>[] container;
 
     /**
      * Индекс
@@ -107,8 +107,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
      * @return - hashcode
      */
     private int hash(Object key) {
-        int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        return (key == null) ? 0 : (key.hashCode()) ^ (key.hashCode() >>> 16);
     }
 
     /**
@@ -120,7 +119,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
 
     @Override
     public Iterator<V> iterator() {
-        Entry<K,V>[] container = this.container;
+        Entry<K, V>[] container = this.container;
         int occupancy = this.occupancy;
         return new Iterator<V>() {
 
@@ -155,7 +154,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
      * @param <K> - ключ
      * @param <V> - значение
      */
-    private static class Entry<K,V> {
+    private static class Entry<K, V> {
 
         /**
          * Hashcode ключа

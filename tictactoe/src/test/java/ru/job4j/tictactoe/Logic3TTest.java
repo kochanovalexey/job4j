@@ -1,6 +1,8 @@
-package job4j.tictactoe;
+package ru.job4j.tictactoe;
 
 import org.junit.Test;
+import ru.job4j.tictactoe.Logic3T;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 

@@ -39,7 +39,7 @@ public class Node<T> {
         Node[] nodes = new Node[10];
         int index = 0;
         while (currentNode.next != null) {
-            for (int i = 0; i < index; i++){
+            for (int i = 0; i < index; i++) {
                 if (currentNode == nodes[i]) {
                     return true;
                 }

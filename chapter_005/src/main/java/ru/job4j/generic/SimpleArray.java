@@ -42,7 +42,7 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param model - значение
      */
     public void set(int index, T model) {
-        if(index < this.index) {
+        if (index < this.index) {
             array[index] = model;
         }
     }

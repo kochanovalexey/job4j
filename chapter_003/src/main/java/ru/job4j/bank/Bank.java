@@ -87,7 +87,7 @@ public class Bank {
      * @param amount - сумма перевода
      * @return - результат операции
      */
-    public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         List<Account> srcAccounts = getUserAccounts(srcPassport);
         Account srcAccount = getUserAccount(srcAccounts, srcRequisite);
         if (srcAccount == null) {

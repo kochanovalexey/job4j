@@ -52,7 +52,7 @@ public class Account {
      * @param amount - сумма
      */
     public void refill(double amount) {
-        this.value =(int) (this.value+ amount);
+        this.value = (int) (this.value + amount);
     }
 
     /**
@@ -65,7 +65,7 @@ public class Account {
         if (this.value < amount) {
             return false;
         }
-        this.value =(int) (this.value - amount);
+        this.value = (int) (this.value - amount);
         account.refill(amount);
         return true;
     }

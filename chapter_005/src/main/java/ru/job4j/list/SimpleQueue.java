@@ -7,7 +7,7 @@ package ru.job4j.list;
  * @version 1
  * @since 09.09.2019
  */
-public class SimpleQueue<T>{
+public class SimpleQueue<T> {
 
     /**
      * Первый стек

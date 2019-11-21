@@ -50,7 +50,7 @@ public class EvenIntegerIterator implements Iterator {
      * @return - следующий индекс
      */
     private int returnNextIndex() {
-        for(int i = this.index; i < this.numbers.length; i++) {
+        for (int i = this.index; i < this.numbers.length; i++) {
             if (this.numbers[i] % 2 == 0) {
                 return i;
             }

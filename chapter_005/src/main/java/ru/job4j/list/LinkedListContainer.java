@@ -40,7 +40,7 @@ public class LinkedListContainer<E> implements Iterable<E> {
      */
     public E get(int index) {
         Node<E> result = this.first;
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
             result = result.next;
         }
         return result.data;

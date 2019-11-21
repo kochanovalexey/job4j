@@ -64,11 +64,13 @@ public class User implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        if (o == this);
+        if (o == this) {
+            return 1;
+        }
         if (o == null || getClass() != o.getClass()) {
             return -1;
         }
-        User User = (User) o;
-        return this.passport.compareTo(User.passport);
+        User user = (User) o;
+        return this.passport.compareTo(user.passport);
     }
 }
