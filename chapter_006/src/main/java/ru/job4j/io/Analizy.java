@@ -1,6 +1,9 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class Класс Analizy
  *
@@ -15,27 +18,52 @@ public class Analizy {
      * @param target - путь, куда будет записан результат метода
      */
     public void unavailable(String source, String target) {
-        boolean unavailable = false;
-        try (BufferedReader read = new BufferedReader(new FileReader(source));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
+        List<String> listPeriod = getUnavailablePeriods(source);
+        writeUnavailablePeriods(listPeriod, target);
+    }
+
+    /**
+     * Метод, возвращающий периоды недоступности сервера
+     * @param source - путь к файлу
+     * @return - список недоступных периодов
+     */
+    public List<String> getUnavailablePeriods(String source) {
+        List<String> listPeriod = new ArrayList<>();
+        String time = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader(source))) {
             String line;
             do {
-                line = read.readLine();
+                line = reader.readLine();
                 if (line == null) {
-                    return;
+                    break;
                 }
                 String[] subStr = line.split(" ");
-                if (unavailable) {
-                    writer.write(subStr[1]);
-                    writer.newLine();
-                    unavailable = false;
+                if (time != "") {
+                    time = time.concat(subStr[1]);
+                    listPeriod.add(time);
+                    time = "";
                 }
                 if (subStr[0].equals("400") || subStr[0].equals("500")) {
-                    writer.write(String.format(subStr[1].concat(";")));
-                    unavailable = true;
+                    time = subStr[1].concat(";");
                 }
-
             } while (line != null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listPeriod;
+    }
+
+    /**
+     * Метод, записывающий периоды недоступности сервера
+     * @param listPeriod - спсиок периодов
+     * @param target - путь к файлу
+     */
+    private void writeUnavailablePeriods(List<String> listPeriod, String target) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
+            for (String time: listPeriod) {
+                writer.write(time);
+                writer.newLine();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
