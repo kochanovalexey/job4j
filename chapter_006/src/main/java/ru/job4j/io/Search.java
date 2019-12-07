@@ -45,18 +45,8 @@ public class Search {
      * @return - результат проверки
      */
     private boolean checkExtensionFiles(File file, List<String> exts) {
-        boolean result = false;
         String nameFile = file.getName();
-        String[] subStr = nameFile.split("\\.");
-        if (subStr.length > 1) {
-            for (String ext : exts) {
-                if (subStr[subStr.length - 1].equals(ext)) {
-                    result = true;
-                    break;
-                }
-            }
-        }
-        return result;
+        return exts.stream().anyMatch(ext -> nameFile.endsWith(ext));
     }
 }
 
